@@ -1,1 +1,75 @@
+#Cs137 source made for UNL NaI+PMT
+/run/initialize
+	   
 
+#########################################
+#PMT trigRate w/ Cs137:  # freq = [453.2391523713421, 469.3015214384509, #
+     	      	 	 #      	 467.64025841550495]		 #
+#Cs137 freq 25,500 Hz (calculated on paper using UNL source label info) [Halve this in order to get just the one side of the source]
+#########################################
+#Gamma: #################################
+/gps/particle gamma
+
+#Gaussian energy distribution
+/gps/ene/type Gauss
+/gps/ene/mono 661.657 keV	#from nucleardata.nuclear.lu.se/toi/
+/gps/ene/sigma 50 keV		#Just a guess for now
+
+/gps/pos/centre -20 10 -50 mm
+
+#disc shape, solid
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/radius 1. cm # MEASURE THIS
+/gps/pos/sigma_r 1. cm
+/gps/pos/halfy 1. mm # MEASURE THIS
+
+/gps/ang/type iso
+/gps/pos/rot1 1 0 0		# surface is in XZ plane
+/gps/pos/rot2 0 0 1
+# /gps/ang/mintheta 0 
+# /gps/ang/maxtheta 180
+# /gps/ang/minphi 0 
+# /gps/ang/maxphi 90
+
+#/gps/direction 0 -1 0
+
+
+#Beta: #################################
+/gps/source/add 1
+/gps/particle e-
+
+/gps/ene/type Gauss
+/gps/ene/mono 0.512 MeV
+/gps/ene/sigma 50 keV
+
+/gps/pos/centre -20 10 -50 mm
+
+#disc shape, solid
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/radius 1. cm # MEASURE THIS
+/gps/pos/sigma_r 1. cm
+/gps/pos/halfy 1. mm # MEASURE THIS
+
+/gps/ang/type iso
+/gps/pos/rot1 1 0 0		# surface is in XZ plane
+/gps/pos/rot2 0 0 1
+# /gps/ang/mintheta 0 
+# /gps/ang/maxtheta 90
+# /gps/ang/minphi 0 
+# /gps/ang/maxphi 90
+
+#/gps/direction 0 -1 0
+
+#########################################
+#Noise: #################################
+	# freq = [330.01112966054535, 317.39772727272725, #
+	#      	 325.5327635327635, 323.7723328228688,	  #
+	#	 339.37631027253667]			  #	
+#########################################
+
+#/gps/number 10 #nb of particles
+/run/beamOn 200000
+
+#/gps/hist/point 661.657 85.1 	#nucleardata.nuclear.lu.se/toi/

@@ -2,6 +2,7 @@
 edits made / extra files I added to the MilliQanSim Geant4 repository. Additions are specific to the NaI+PMT from the UNL HEP lab, Summer 2022.
 
 When I mention "stage", I am referring to the files which are directly called and active whenever the simulation is run. Specifically, _MilliQan.cc, src/mqDetectorConstruction.cc, mqShieldingPhysics.cc_, etc. These are the files which are called, and every file ending with _.cc.'something'_ is some variation which must first be copied over to its respective stage file before running the Sim.
+
 --------
 
 gammaSetupUNL.sh - script to copy all the UNL files to the stage, and run MilliQan with the newly updated stage.
